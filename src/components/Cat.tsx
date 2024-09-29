@@ -1,19 +1,16 @@
 import clsx from 'clsx';
 import type {RefObject} from 'react';
+import {useStore} from '../store';
 import styles from './Cat.module.css';
 
 type Props = {
-  /**
-   * Which direction the cat is moving, in degrees.
-   * - Undefined === sleeping
-   * - Null === sitting
-   */
-  direction?: number | null;
   elementRef?: RefObject<HTMLDivElement>;
 };
 
-export default function Cat({direction, elementRef}: Props) {
+export default function Cat({elementRef}: Props) {
+  const direction = useStore((state) => state.direction);
   const action = getActionFromDirection(direction);
+
   return (
     <div
       className={clsx(
