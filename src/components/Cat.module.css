@@ -31,7 +31,7 @@
 }
 
 .sitting {
-  animation: sit 3s steps(1) infinite;
+  animation: sit 2s steps(1) infinite;
 }
 
 .sleeping {

@@ -1,13 +1,14 @@
 import clsx from 'clsx';
-import type {RefObject} from 'react';
+import type {CSSProperties, RefObject} from 'react';
 import {useStore} from '../store';
 import styles from './Cat.module.css';
 
 type Props = {
   elementRef?: RefObject<HTMLDivElement>;
+  style?: CSSProperties;
 };
 
-export default function Cat({elementRef}: Props) {
+export default function Cat({elementRef, style}: Props) {
   const direction = useStore((state) => state.direction);
   const distance = useStore((state) => state.distance);
   const action = getActionFromDirection(direction, distance);
@@ -28,6 +29,7 @@ export default function Cat({elementRef}: Props) {
         action === 'sleeping' && styles.sleeping,
       )}
       ref={elementRef}
+      style={style}
     />
   );
 }

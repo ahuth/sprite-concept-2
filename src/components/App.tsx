@@ -6,11 +6,11 @@ import Cat from './Cat';
 export default function App() {
   const catRef = useRef<HTMLDivElement>(null);
   const actions = useStore((state) => state.actions);
+  const catX = useStore((state) => state.catX);
+  const catY = useStore((state) => state.catY);
 
   const handleMouseMove = useThrottledCallback((event: MouseEvent) => {
-    if (catRef.current) {
-      actions.updateDest(catRef.current, event.clientX, event.clientY);
-    }
+    actions.updateDest(event.clientX, event.clientY);
   }, 100);
 
   useEffect(() => {
@@ -18,5 +18,19 @@ export default function App() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  return <Cat elementRef={catRef} />;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (catRef.current) {
+        actions.move(catRef.current);
+      }
+    }, 250);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <Cat
+      elementRef={catRef}
+      style={{position: 'absolute', top: catY, left: catX}}
+    />
+  );
 }
