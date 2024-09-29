@@ -15,9 +15,7 @@ export default function App() {
 
   useEffect(() => {
     window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   return <Cat elementRef={catRef} />;
