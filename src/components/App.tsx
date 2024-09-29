@@ -19,6 +19,15 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    function handleTouchEnd(event: TouchEvent) {
+      const touch = event.changedTouches[0];
+      actions.updateDest(touch.clientX, touch.clientY);
+    }
+    window.addEventListener('touchend', handleTouchEnd);
+    return () => window.removeEventListener('touchend', handleTouchEnd);
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       if (catRef.current) {
         actions.move(catRef.current);
