@@ -18,7 +18,7 @@ export default function App() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  });
+  }, []);
 
   return <Cat elementRef={catRef} />;
 }
