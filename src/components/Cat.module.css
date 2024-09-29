@@ -1,3 +1,12 @@
 .sleeping {
-  background-position: -64px 0;
+  animation: sleep 2s steps(2) infinite;
+}
+
+@keyframes sleep {
+  0% {
+    background-position: -64px 0;
+  }
+  100% {
+    background-position: -64px -64px;
+  }
 }
