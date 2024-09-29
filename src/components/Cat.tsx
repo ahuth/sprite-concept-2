@@ -1,5 +1,16 @@
-export default function Cat() {
+import clsx from 'clsx';
+
+type Props = {
+  action: 'sleeping';
+};
+
+export default function Cat({action}: Props) {
   return (
-    <div className="h-8 w-8 bg-[url('/oneko-classic.gif')] bg-[-64px_0]" />
+    <div
+      className={clsx(
+        "h-8 w-8 bg-[url('/oneko-classic.gif')]",
+        action === 'sleeping' && 'bg-[-64px_0]',
+      )}
+    />
   );
 }

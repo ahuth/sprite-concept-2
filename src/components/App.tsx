@@ -1,5 +1,5 @@
 import Cat from './Cat';
 
 export default function App() {
-  return <Cat />;
+  return <Cat action="sleeping" />;
 }
