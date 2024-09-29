@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import styles from './Cat.module.css';
 
 type Props = {
-  action: 'sleeping';
+  action: 'sitting' | 'sleeping';
 };
 
 export default function Cat({action}: Props) {
@@ -10,6 +10,7 @@ export default function Cat({action}: Props) {
     <div
       className={clsx(
         "h-8 w-8 bg-[url('/oneko-classic.gif')]",
+        action === 'sitting' && styles.sitting,
         action === 'sleeping' && styles.sleeping,
       )}
     />

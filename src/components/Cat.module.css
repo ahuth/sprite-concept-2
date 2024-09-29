@@ -1,5 +1,18 @@
+.sitting {
+  animation: sit 3s steps(1) infinite;
+}
+
 .sleeping {
   animation: sleep 2s steps(2) infinite;
+}
+
+@keyframes sit {
+  0% {
+    background-position: -224px -96px;
+  }
+  50% {
+    background-position: -96px -96px;
+  }
 }
 
 @keyframes sleep {
