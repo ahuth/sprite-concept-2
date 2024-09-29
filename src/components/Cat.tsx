@@ -3,21 +3,17 @@ import type {RefObject} from 'react';
 import styles from './Cat.module.css';
 
 type Props = {
-  action:
-    | 'runningDown'
-    | 'runningDownAndLeft'
-    | 'runningDownAndRight'
-    | 'runningLeft'
-    | 'runningRight'
-    | 'runningUp'
-    | 'runningUpAndLeft'
-    | 'runningUpAndRight'
-    | 'sitting'
-    | 'sleeping';
+  /**
+   * Which direction the cat is moving, in degrees.
+   * - Undefined === sleeping
+   * - Null === sitting
+   */
+  direction?: number | null;
   elementRef?: RefObject<HTMLDivElement>;
 };
 
-export default function Cat({action, elementRef}: Props) {
+export default function Cat({direction, elementRef}: Props) {
+  const action = getActionFromDirection(direction);
   return (
     <div
       className={clsx(
@@ -36,4 +32,38 @@ export default function Cat({action, elementRef}: Props) {
       ref={elementRef}
     />
   );
+}
+
+function getActionFromDirection(direction?: number | null) {
+  if (direction === undefined) {
+    return 'sleeping';
+  }
+  if (direction === null) {
+    return 'sitting';
+  }
+  if (direction >= 337.5 || direction < 22.5) {
+    return 'runningRight';
+  }
+  if (direction >= 22.5 && direction < 67.5) {
+    return 'runningDownAndRight';
+  }
+  if (direction >= 67.5 && direction < 112.5) {
+    return 'runningDown';
+  }
+  if (direction >= 112.5 && direction < 157.5) {
+    return 'runningDownAndLeft';
+  }
+  if (direction >= 157.5 && direction < 202.5) {
+    return 'runningLeft';
+  }
+  if (direction >= 202.5 && direction < 247.5) {
+    return 'runningUpAndLeft';
+  }
+  if (direction >= 247.5 && direction < 292.5) {
+    return 'runningUp';
+  }
+  if (direction >= 292.5 && direction < 337.5) {
+    return 'runningUpAndRight';
+  }
+  return 'sleeping';
 }
