@@ -1,9 +1,119 @@
+.runningDown {
+  animation: run-down 0.5s steps(1) infinite;
+}
+
+.runningDownAndLeft {
+  animation: run-down-and-left 0.5s steps(1) infinite;
+}
+
+.runningDownAndRight {
+  animation: run-down-and-right 0.5s steps(1) infinite;
+}
+
+.runningLeft {
+  animation: run-left 0.5s steps(1) infinite;
+}
+
+.runningRight {
+  animation: run-right 0.5s steps(1) infinite;
+}
+
+.runningUp {
+  animation: run-up 0.5s steps(1) infinite;
+}
+
+.runningUpAndLeft {
+  animation: run-up-and-left 0.5s steps(1) infinite;
+}
+
+.runningUpAndRight {
+  animation: run-up-and-right 0.5s steps(1) infinite;
+}
+
 .sitting {
   animation: sit 3s steps(1) infinite;
 }
 
 .sleeping {
   animation: sleep 2s steps(1) infinite;
+}
+
+@keyframes run-down {
+  0% {
+    background-position: -224px -64px;
+  }
+  50% {
+    background-position: -192px -96px;
+  }
+}
+
+@keyframes run-down-and-left {
+  0% {
+    background-position: -192px -32px;
+  }
+
+  50% {
+    background-position: -160px -96px;
+  }
+}
+
+@keyframes run-down-and-right {
+  0% {
+    background-position: -160px -32px;
+  }
+
+  50% {
+    background-position: -160px -64px;
+  }
+}
+
+@keyframes run-left {
+  0% {
+    background-position: -128px -64px;
+  }
+
+  50% {
+    background-position: -128px -96px;
+  }
+}
+
+@keyframes run-right {
+  0% {
+    background-position: -96px 0;
+  }
+
+  50% {
+    background-position: -96px -32px;
+  }
+}
+
+@keyframes run-up {
+  0% {
+    background-position: -32px -64px;
+  }
+  50% {
+    background-position: -32px -96px;
+  }
+}
+
+@keyframes run-up-and-left {
+  0% {
+    background-position: -32px 0;
+  }
+
+  50% {
+    background-position: -32px -32px;
+  }
+}
+
+@keyframes run-up-and-right {
+  0% {
+    background-position: 0 -64px;
+  }
+
+  50% {
+    background-position: 0 -96px;
+  }
 }
 
 @keyframes sit {
