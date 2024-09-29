@@ -9,7 +9,8 @@ type Props = {
 
 export default function Cat({elementRef}: Props) {
   const direction = useStore((state) => state.direction);
-  const action = getActionFromDirection(direction);
+  const distance = useStore((state) => state.distance);
+  const action = getActionFromDirection(direction, distance);
 
   return (
     <div
@@ -31,11 +32,11 @@ export default function Cat({elementRef}: Props) {
   );
 }
 
-function getActionFromDirection(direction?: number | null) {
-  if (direction === undefined) {
+function getActionFromDirection(direction?: number, distance?: number) {
+  if (direction == null) {
     return 'sleeping';
   }
-  if (direction === null) {
+  if (distance === 0) {
     return 'sitting';
   }
   if (direction >= 337.5 || direction < 22.5) {

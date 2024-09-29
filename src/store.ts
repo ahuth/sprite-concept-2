@@ -1,12 +1,8 @@
 import {create} from 'zustand';
 
 type Store = {
-  /**
-   * Which direction the cat is moving, in degrees.
-   * - undefined === sleeping
-   * - null === sitting
-   */
-  direction?: number | null;
+  direction?: number;
+  distance?: number;
   actions: {
     updateDest: (element: HTMLElement, destX: number, destY: number) => void;
   };
@@ -15,6 +11,7 @@ type Store = {
 export const useStore = create<Store>((set) => {
   return {
     direction: undefined,
+    distance: undefined,
     actions: {
       updateDest: (element, destX, destY) => {
         // Get the position and dimensions of the element
@@ -34,7 +31,10 @@ export const useStore = create<Store>((set) => {
         // Convert to degrees
         const angleDegrees = angleRadians * (180 / Math.PI);
 
-        set({direction: angleDegrees});
+        // Get the distance via Pythagoras
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        set({distance, direction: angleDegrees});
       },
     },
   };
