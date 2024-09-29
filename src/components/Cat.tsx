@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import type {RefObject} from 'react';
 import styles from './Cat.module.css';
 
 type Props = {
@@ -13,9 +14,10 @@ type Props = {
     | 'runningUpAndRight'
     | 'sitting'
     | 'sleeping';
+  elementRef?: RefObject<HTMLDivElement>;
 };
 
-export default function Cat({action}: Props) {
+export default function Cat({action, elementRef}: Props) {
   return (
     <div
       className={clsx(
@@ -31,6 +33,7 @@ export default function Cat({action}: Props) {
         action === 'sitting' && styles.sitting,
         action === 'sleeping' && styles.sleeping,
       )}
+      ref={elementRef}
     />
   );
 }
