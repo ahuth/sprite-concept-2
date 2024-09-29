@@ -63,8 +63,10 @@ function getDirections(element: HTMLElement, destX: number, destY: number) {
   const dy = destY - elementCenterY;
 
   const radians = Math.atan2(dy, dx);
-  const degrees = radians * (180 / Math.PI);
   const distance = Math.sqrt(dx * dx + dy * dy);
+
+  // Convert to degrees. Add and mod 360 to ensure positive value.
+  const degrees = (radians * (180 / Math.PI) + 360) % 360;
 
   return {
     radians,
